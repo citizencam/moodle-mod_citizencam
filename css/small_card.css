@@ -1,0 +1,76 @@
+/**
+ * @package   mod
+ * @subpackage citizencam
+ * @copyright 2017 CitizenCam dev@citizencam.eu
+ * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ */
+
+.small_record {
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+}
+
+.small_record img {
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
+    background-image: url('../../../img/spinner-rosetta-gray-26x26.gif');
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.small_record .record_length {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    padding: 4px 6px;
+
+    color: white;
+    background-color: rgba(0,0,0,0.5);
+}
+
+.small_record .record_label {
+    position: absolute;
+    width: calc(100% - 16px);
+    padding: 8px;
+    z-index:1;
+    background: rgba(0, 0, 0, 0.5);
+    bottom: 0px;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 500;
+    margin: 0;
+
+    /* text overflow */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    line-height: 24px;
+    max-height: calc(48px);      /* fallback (X * line-height + padding-top + padding-bottom) */
+    -webkit-line-clamp: 2;      /* X lines to show */
+    -webkit-box-orient: vertical;
+}
+
+.small_record .play-icon {
+    position: absolute;
+    top: calc(50% - 36px);
+    right: calc(50% - 36px);
+    font-size: 72px;
+    color: white;
+    background-color: rgba(0,0,0,0.5);
+    border-radius: 50%;
+    z-index: 2;
+}
+
+.small_record:hover {
+    z-index: 2;
+    box-shadow: 0px 0px 6px 0px rgba(0,0,0,0.12), 0px 6px 6px 0px rgba(0,0,0,0.24);
+}
+
+.small_record:not(:hover) .play-icon {
+    opacity: 0;
+    -webkit-transition: opacity, 0.2s;
+    -moz-transition: opacity, 0.2s;
+    transition: opacity, 0.2s;
+}

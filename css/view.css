@@ -1,0 +1,34 @@
+/**
+ * @package   mod
+ * @subpackage citizencam
+ * @copyright 2017 CitizenCam dev@citizencam.eu
+ * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ */
+
+#cc-content {
+    text-align: center;
+}
+
+#cc-video-wrapper {
+    width: 100%;
+    max-width: 900px;
+    display: inline-block;
+    position: relative;
+}
+
+#cc-video-wrapper:after {
+    /* 16:9 ratio */
+    padding-top: calc(100% * 9 / 16);
+    display: block;
+    content: '';
+}
+
+#cc-video {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+}
