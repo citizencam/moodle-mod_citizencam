@@ -74,7 +74,7 @@ echo $OUTPUT->heading($citizencam->name);
 echo
 '<div id="cc-content">
     <div id="cc-video-wrapper">
-        <iframe id="cc-video" allowfullscreen frameBorder="0" src="' . $config->citizencam_cctv_url . '/v/' . $citizencam->url . '?embed' . '"/>
+        <iframe id="cc-video" allowfullscreen frameBorder="0" src="' . $config->citizencam_cctv_url . '/v/' . $citizencam->url . '?embed' . '"></iframe>
     </div>
 </div>';
 
