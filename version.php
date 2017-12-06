@@ -14,7 +14,7 @@
 defined('MOODLE_INTERNAL') || die();
 
 $plugin->component = 'mod_citizencam';
-$plugin->version = 2017101104; // The current module version (Date: YYYYMMDDXX)
+$plugin->version = 2017101105; // The current module version (Date: YYYYMMDDXX)
 $plugin->release = '1.0';
 $plugin->requires = 2016120502; // Requires this Moodle version
 $plugin->maturity = MATURITY_STABLE;
