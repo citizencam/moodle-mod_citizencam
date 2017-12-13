@@ -1,4 +1,19 @@
 <?php
+// This file is part of Moodle - http://moodle.org/
+//
+// Moodle is free software: you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation, either version 3 of the License, or
+// (at your option) any later version.
+//
+// Moodle is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU General Public License for more details.
+//
+// You should have received a copy of the GNU General Public License
+// along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
+ 
 /**
  * Library of interface functions and constants for module citizencam
  *
@@ -9,8 +24,7 @@
  * logic, should go to locallib.php. This will help to save some memory when
  * Moodle is performing actions across all modules.
  *
- * @package   mod
- * @subpackage citizencam
+ * @package   mod_citizencam
  * @copyright 2017 CitizenCam dev@citizencam.eu
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
@@ -38,7 +52,7 @@ function citizencam_supports($feature) {
         case FEATURE_MOD_ARCHETYPE:      return MOD_ARCHETYPE_RESOURCE;
         case FEATURE_MOD_INTRO:          return true;
         case FEATURE_SHOW_DESCRIPTION:   return true;
-        case FEATURE_GRADE_HAS_GRADE:    return true;
+        case FEATURE_GRADE_HAS_GRADE:    return false;
         case FEATURE_BACKUP_MOODLE2:     return true;
         default:                         return null;
     }
@@ -311,29 +325,30 @@ function citizencam_scale_used_anywhere($scaleid) {
  */
 function citizencam_grade_item_update(stdClass $citizencam, $reset=false) {
     global $CFG;
-    require_once($CFG->libdir.'/gradelib.php');
+    if (citizencam_supports(FEATURE_GRADE_HAS_GRADE)) {
+        require_once($CFG->libdir.'/gradelib.php');
 
-    $item = array();
-    $item['itemname'] = clean_param($citizencam->name, PARAM_NOTAGS);
-    $item['gradetype'] = GRADE_TYPE_VALUE;
-
-    if ($citizencam->grade > 0) {
+        $item = array();
+        $item['itemname'] = clean_param($citizencam->name, PARAM_NOTAGS);
         $item['gradetype'] = GRADE_TYPE_VALUE;
-        $item['grademax']  = $citizencam->grade;
-        $item['grademin']  = 0;
-    } else if ($citizencam->grade < 0) {
-        $item['gradetype'] = GRADE_TYPE_SCALE;
-        $item['scaleid']   = -$citizencam->grade;
-    } else {
-        $item['gradetype'] = GRADE_TYPE_NONE;
-    }
 
-    if ($reset) {
-        $item['reset'] = true;
-    }
+        if ($citizencam->grade > 0) {
+            $item['gradetype'] = GRADE_TYPE_VALUE;
+            $item['grademax']  = $citizencam->grade;
+            $item['grademin']  = 0;
+        } else if ($citizencam->grade < 0) {
+            $item['gradetype'] = GRADE_TYPE_SCALE;
+            $item['scaleid']   = -$citizencam->grade;
+        } else {
+            $item['gradetype'] = GRADE_TYPE_NONE;
+        }
 
-    grade_update('mod/citizencam', $citizencam->course, 'mod', 'citizencam',
-            $citizencam->id, 0, null, $item);
+        if ($reset) {
+            $item['reset'] = true;
+        }
+
+        grade_update('mod/citizencam', $citizencam->course, 'mod', 'citizencam', $citizencam->id, 0, null, $item);
+    }
 }
 
 /**

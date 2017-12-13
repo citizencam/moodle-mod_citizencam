@@ -5,25 +5,25 @@
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-#cc-content {
+.path-mod-citizencam #mod-ctz-content {
     text-align: center;
 }
 
-#cc-video-wrapper {
+.path-mod-citizencam #mod-ctz-video-wrapper {
     width: 100%;
     max-width: 900px;
     display: inline-block;
     position: relative;
 }
 
-#cc-video-wrapper:after {
+.path-mod-citizencam #mod-ctz-video-wrapper:after {
     /* 16:9 ratio */
     padding-top: calc(100% * 9 / 16);
     display: block;
     content: '';
 }
 
-#cc-video {
+.path-mod-citizencam #mod-ctz-video {
     width: 100%;
     height: 100%;
     position: absolute;

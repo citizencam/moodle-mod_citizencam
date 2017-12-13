@@ -1,79 +1,48 @@
 <?php
+// This file is part of Moodle - http://moodle.org/
+//
+// Moodle is free software: you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation, either version 3 of the License, or
+// (at your option) any later version.
+//
+// Moodle is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU General Public License for more details.
+//
+// You should have received a copy of the GNU General Public License
+// along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
+ 
 /**
  * Internal library of functions for module citizencam
  *
  * All the citizencam specific functions, needed to implement the module
  * logic, should go here. Never include this file from your lib.php!
  *
- * @package   mod
- * @subpackage citizencam
+ * @package   mod_citizencam
  * @copyright 2017 CitizenCam dev@citizencam.eu
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
 defined('MOODLE_INTERNAL') || die();
 
-function curl($url) {
-	try {
-        $curl = curl_init();
-
-        curl_setopt($curl, CURLOPT_URL, $url);
-        curl_setopt($curl, CURLOPT_HEADER, 0);
-        curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
-        curl_setopt($curl, CURLOPT_TIMEOUT, 3);
-        curl_setopt($curl, CURLOPT_HTTPAUTH, CURLAUTH_BASIC);
-
-        $result = curl_exec($curl);        
-        curl_close($curl);
-    } catch (\Exception $e) {
-        throw new Exception("Cannot send the request to CitizenCam Studio");
-    }
-
-    
-    return $result;
-}
-
-/* Helper function that imports all the necessary CSS and JS files */
-function import($iframe = false) {
+/* Helper function that imports all the necessary CSS files */
+function mod_citizencam_import() {
     global $CFG, $PAGE;
-
-    $js = [
-        'jquery.js',
-        'edit.js',
-        'dialog-polyfill.js',
-        'material.min.js',
-        'moment-with-locales.js'
-    ];
 
     $css = [
         'dialog-polyfill.css',
         'material.custom.css',
         'material-icons.css',
-        'font-awesome.min.css',
         'small_card.css',
-        'style.css'
+        'mod_form.css'
    ];
 
-    $srcJs = $iframe ? $CFG->wwwroot : '';
-    $srcCss = $iframe ? $CFG->wwwroot : '';
-    $srcJs .= '/mod/citizencam/js/';
-    $srcCss .= '/mod/citizencam/css/';
-
-    foreach ($js as $file) {
-        $file = $srcJs . $file . '?' . time();
-        if ($iframe) {
-            echo '<script type="text/javascript" src="' . $file . '"></script>';
-        } else {
-            $PAGE->requires->js($file, true);
-        }
-    }
+    $srcCss = '/mod/citizencam/css/';
 
     foreach ($css as $file) {
         $file = $srcCss . $file. '?' . time();
-        if ($iframe) {
-            echo '<link rel="stylesheet" href="' . $file . '">';
-        } else {
-            $PAGE->requires->css($file);
-        }
+        $PAGE->requires->css($file);
     }
 }

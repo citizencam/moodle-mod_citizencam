@@ -1,0 +1,106 @@
+/**
+ * @package   mod
+ * @subpackage citizencam
+ * @copyright 2017 CitizenCam dev@citizencam.eu
+ * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ */
+
+/* RECORDS GRID */
+.path-mod-citizencam #ctz-iframe-content {
+    font-family: "Roboto","Helvetica","Arial",sans-serif;
+    width: 100%;
+    height: 500px;
+    overflow: auto;
+}
+
+.path-mod-citizencam .mdl-grid {
+    padding-left: 0;
+    padding-top: 0;
+}
+
+/* Record mosaic */
+.path-mod-citizencam .ctz-small-record {
+    cursor:pointer;
+}
+
+.path-mod-citizencam .ctz-small-record img {
+    height: auto;
+}
+
+.path-mod-citizencam .ctz-small-record .ctz-record-label {
+    width: 100%;
+}
+
+/* DETAILS DIALOG*/
+.path-mod-citizencam #ctz-record-dialog {
+    width: 80vw !important;
+    min-width: 0px;
+    max-width: 1024px;
+    padding: 0;
+}
+
+.path-mod-citizencam #ctz-record-dialog .mdl-dialog__content {
+	padding: 0;
+}
+
+.path-mod-citizencam #ctz-record-dialog .mdl-dialog__actions {
+    padding-right: 20px;
+    padding-bottom: 15px;
+    padding-top: 0;
+}
+
+.path-mod-citizencam #ctz-record-dialog .mdl-card__title {
+	color: white;
+	height: 175px;
+	padding: 0;
+}
+
+.path-mod-citizencam #ctz-record-dialog .mdl-card__title-text {
+	background: rgba(0, 0, 0, 0.7);
+    padding: 13px 25px;
+	width: 100%;
+}
+
+.path-mod-citizencam #ctz-record-dialog .dialog-body {
+    max-height: 500px;
+    overflow: auto;
+    width: 100%;
+}
+
+/* MOMENTS LIST */
+.path-mod-citizencam #ctz-record-dialog #ctz-moments .ctz-moment {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 60px;
+    border-top: 1px solid #CCC;
+}
+
+.path-mod-citizencam #ctz-record-dialog #ctz-moments .ctz-moment img {
+    height: 60px;
+    background-image: url(../pix/spinner.gif);
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.path-mod-citizencam #ctz-record-dialog #ctz-moments .ctz-moment .ctz-metadata {
+    flex-grow: 10;
+    padding: 0px 8px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -wbekit-box;
+    max-height: calc(60px / 3 * 2);
+    line-height: calc(60px / 3);
+    font-size: 14px;
+}
+
+.path-mod-citizencam #ctz-record-dialog #ctz-moments .ctz-moment .length {
+    padding: 8px;
+    align-self: flex-end;
+    color: #6f6f6f;
+}
+
+.path-mod-citizencam #ctz-record-dialog #ctz-moments .ctz-moment:hover {
+    background-color: rgba(128,128,128,0.1);
+}

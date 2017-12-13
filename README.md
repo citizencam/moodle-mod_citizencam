@@ -8,7 +8,10 @@ License: http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
 Description:
 ------------
 CitizenCam Record enables you to insert a CitizenCam video recording directly into your course thanks to a multi-view player.
+CitizenCam Record is a complete solution to record videos of your events, with multiple synchronized cameras. With CitizenCam Record, you can record your course with videos from both your board and your PC, in just a few clics. The event can then be imported inside your Moodle course thanks to the CitizenCam Record Moodle plugin. Our embedded video player allows your students to choose what they want to see at anytime, to better suit their needs.
 
+The use of this plugin is completely free, and you can embed any public video of CitizenCam TV in Moodle. However, recording your own videos is a paid service which is independent from this plugin.
+CitizenCam Record's Privacy Policy can be found here: https://sites.google.com/view/cc-record-privacy-policy
 
 Installation:
 -------------
@@ -16,7 +19,7 @@ Follow [the standard moodle procedure](https://docs.moodle.org/28/en/Installing_
 
 Once installed, go to the plugin settings in Moodle.
 
-Set the URL of CitizenCam Studio and CitizenCam TV to use in the plugin settings (usually https://studio.citizencam.tv and https://www.citizencam.tv): 
+Set the URL of CitizenCam Studio and CitizenCam TV to use in the plugin settings. This is either the ones we've provided you, or, if you don't have any, our online platforms: https://studio.citizencam.tv (for CitizenCam Studio) and https://www.citizencam.tv (for CitizenCam TV).
 
 ![Plugin settings](https://puu.sh/xWehR/c4684ac6ec.png)
 
